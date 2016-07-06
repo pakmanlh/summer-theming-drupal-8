@@ -1,0 +1,8 @@
+
+@font-face {
+  font-family: 'Mamelon';
+  src: url('Mamelon.eot?#iefix') format('embedded-opentype'),  url('Mamelon.otf')  format('opentype'),
+	     url('Mamelon.woff') format('woff'), url('Mamelon.ttf')  format('truetype'), url('Mamelon.svg#Mamelon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
