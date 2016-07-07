@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * League theme for reveal.js.
  *
@@ -130,12 +131,18 @@ body {
 .reveal blockquote {
   display: block;
   position: relative;
-  width: 70%;
+  width: 90%;
   margin: 20px auto;
   padding: 5px;
   font-style: italic;
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0px 0px 5px #f1bc46; }
+  .reveal blockquote:before {
+    font-family: 'kg_ray_of_sunshineregular';
+    content: "“"; }
+  .reveal blockquote:after {
+    font-family: 'kg_ray_of_sunshineregular';
+    content: "”"; }
 
 .reveal blockquote p:first-child,
 .reveal blockquote p:last-child {
@@ -214,10 +221,16 @@ body {
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
-  transition: color .15s ease; }
+  transition: color .15s ease;
+  background: #f1bc46;
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+  font-family: 'kg_ray_of_sunshineregular';
+  font-size: 0.8em; }
 
 .reveal a:hover {
-  color: #71e9f4;
+  color: #000;
+  background: #f6d68d;
   text-shadow: none;
   border: none; }
 

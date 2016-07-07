@@ -36,7 +36,7 @@
 
 	<body>
 
-		<div class="reveal mario">
+		<div class="reveal summer">
 			<span class="hashtag">#drupalsummer</span>
 			<span class="twitter_account">@pakmanlh</span>
 
@@ -64,26 +64,43 @@
 				<!-- Legacy slides -->
 
 				<section>
-					<h2>Coses a oblidar</h2>
+					<h2>Conceptos a olvidar</h2>
 					<ul>
-						<li class="fragment"><code>theme()</code> s'han transformat en plantilles</li>
-						<li class="fragment"><code>template_process_hook()</code> desapareix</li>
-						<li class="fragment">Ara tot són <em>render arrays</em></li>
+						<li><span class="fragment strike">Funciones <code>theme()</code></span> <span class="fragment fade-up">Plantillas twig</span></li>
+						<li><span class="fragment strike"><code>template_process_hook()</code></span> <span class="fragment fade-up">desaparece!</span></li>
+						<li class="fragment fade-up">Ahora serán todo <em>render arrays (yuju!)</em></li>
 					</ul>
 				</section>
 				<section>
+					<h2>¿Render qué?</h2>
+				<blockquote cite="https://www.drupal.org/developing/api/8/render/arrays">Render arrays are nested and thus form a tree. Consider them Drupal's «render tree» — Drupal's equivalent of the DOM.</blockquote>
+				<a href="https://www.drupal.org/developing/api/8/render/arrays">+info</a>
+				</section>
+				<section>
+					<h2>¿Render qué?</h2>
+				<pre><code class="language-php">$element = [
+  '#type' => 'my_element',
+  '#config_one' => 'blue',
+];
+
+$element['#attributes'] = [
+  'id' => 'my_blue_element_1',
+  'class' => ['my-element','blue'],
+];</code></pre>
+				</section>
+				<section>
 					<section>
-						<h2><code>my_theme</code></h2>
-						<p>Crearem una carpeta <code>my_theme</code> a <code>/themes</code></p>
-						<p class="fragment"><strong>Mai</strong> crear-los a la carpeta <code>/core/themes</code></p>
-						<p class="fragment">Bona pràctica crear les subcarpetes <code>/themes/contrib</code> i <code>/themes/custom</code></p>
+						<h2><code>summer_theme</code></h2>
+						<p>Crearemos una carpeta <code>summer_theme</code><br> en la carpeta<code>/themes</code></p>
+						<p class="fragment"><strong>NUNCA</strong> en la carpeta <code>/core/themes</code></p>
+						<p class="fragment"><em>Briconsejo:</em> crear subcarpetas:<br> <code>/themes/contrib</code> <br> <code>/themes/custom</code></p>
 					</section>
 					<section>
-						<h2><code class="css" ><em>my_theme</em>.info.yml</code></h2>
+						<h2><code class="lowercase"><em>summer_theme</em>.info.yml</code></h2>
 						<pre><code class="language-yaml">name: My theme
 type: theme
 base theme: classy
-description: 'My custom theme for Drupal.cat'
+description: 'My custom theme for the DrupalSummer'
 core: 8.x
 regions:
   header: Header
@@ -92,30 +109,74 @@ regions:
   footer: Footer</code></pre>
 					</section>
 					<section>
-						<h2>Temes base</h2>
-						<p>Al crear un tema podrem escollir entre dos temes base del nucli:</p>
-						<dl>
-    						<dt>Stable</dt>
-    						<dd>Marcat mínim i molt poques classes. Conté totes les plantilles i CSS del nucli.</dd>
-							<dt>Classy</dt>
-							<dd>Proporciona classes predeterminades que es poden usar per donar estils.</dd>
-						</dl>
+						<h2>Temas en core:</h2>
+						<ul>
+							<li>Bartik</li>
+							<li>Seven</li>
+							<li>Stark</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Temas base</h2>
+						<p>Para crear un nuevo tema podemos escoger entre dos <u>temas base</u> (ocultos) incluidos en core.</p>
 					</section>
 					<section>
 						<h2>Stable</h2>
-						<pre><code class="language-html">&lt;body&gt;...markup...&lt;/body&gt;</code></pre>
+						<dl>
+    						<dd>Marcado mínimo y muy pocas classes. Contiene todas las plantillas y estilos CSS de core.</dd>
+						</dl>
+						<pre><code class="language-html"><div>
+  <div>Favorite horses</div>
+  <div>
+    <div>Black Stallion</div>
+    <div>Shadowfax</div>
+    <div>Hidalgo</div>
+  </div>
+</div>
+</code></pre>
+					</section>
+					<section>
 						<h2>Classy</h2>
-						<pre><code class="language-html">&lt;body class="layout-one-sidebar layout-sidebar-first path-node page-node-type-article"&gt;...markup...&lt;/body&gt;</code></pre>
+						<dl>
+							<dd>Proporciona muchas classes predeterminadas a partir de diferentes características que se pueden usar para dar estilo.</dd>
+						</dl>
+						<pre><code class="language-html"><div class="field field--name-field-favorite-horses field--type-string field--label-above">
+  <div class="field__label">Favorite horses</div>
+  <div class='field__items'>
+    <div class="field__item">Black Stallion</div>
+    <div class="field__item">Shadowfax</div>
+    <div class="field__item">Hidalgo</div>
+  </div>
+</div></code></pre>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h2>Treballar amb Twig</h2>
+					<img src="img/twig-logo.png" style="box-shadow: none; margin-top: -3em">
+						<h2>Trabajar con <span class="lowercase">Twig</span></h2>
 					</section>
 					<section>
 						<h2>Variables</h2>
 						<p>Imprimir variable</p>
 						<pre><code class="language-twig">&lt;h2{{ title_attributes }}&gt;{{ label }}&lt;/h2&gt;</code></pre>
+					</section>
+					<section>
+						<h2>Acceso a variables</h2>
+						<pre><code class="language-twig">{{ foo.bar }}</code></pre>
+						<p>Ejecuta la siguiente cadena para obtener el valor</p>
+						<pre><code class="language-php">// Elemento de una array.
+$foo['bar'];
+// Propiedad de un objeto.
+$foo->bar;
+// Método de un objeto.
+$foo->bar();
+// Get de un objeto.
+$foo->getBar();
+// Existencia del valor.
+$foo->isBar();</code></pre>
+					</section>
+					<section>
+						<h2>Variables</h2>
 						<p>Assignar valors a variable</pe>
 						<pre><code class="language-twig">{%
   set classes = [
@@ -126,28 +187,15 @@ regions:
 %}</code></pre>
 					</section>
 					<section>
-						<h2>Accedir a variables</h2>
-						<pre><code class="language-twig">{{ foo.bar }}</code></pre>
-						<p>Executa la següent cadena per obtenir el valor</p>
-						<pre><code class="language-php">// Element d'un array.
-$foo['bar'];
-// Propietat d'un objecte.
-$foo->bar;
-// Mètode d'un objecte.
-$foo->bar();
-// Get d'un objecte.
-$foo->getBar();
-// Existència del valor.
-$foo->isBar();</code></pre>
-					</section>
-					<section>
-						<h2>Condicionals</h2>
+						<h2>Condicionales</h2>
 						<pre><code class="language-twig">{% if not page %}
   &lt;h2{{ title_attributes }}&gt;
     &lt;a href="{{ url }}" rel="bookmark"&gt;{{ label }}&lt;/a&gt;
   &lt;/h2&gt;
 {% endif %}</code></pre>
-
+					</section>
+					<section>
+						<h2>+Condicionales</h2>
 <pre><code class="language-twig">{% if (summary is not empty) or (description is not empty) %}
   &lt;details&gt;
     {% if summary is not empty %}
@@ -160,53 +208,77 @@ $foo->isBar();</code></pre>
 {% endif %}</code></pre>
 					</section>
 					<section>
-						<h2>Estructures de control</h2>
+						<h3>Estructuras de control</h3>
 						<p>Estructura for simple</p>
 						<pre><code class="language-twig">{% for content in column.content %}
   {{- content.separator }}{{ content.field_output -}}
 {% endfor %}</code></pre>
-						<p>Iterant per clau i valor</p>
+					</section>
+					<section>
+						<h3>+Estructuras de control</h3>
+						<p>Iterando por clave y valor</p>
 						<pre><code class="language-twig">{% for key, column in row.columns %}
   &lt;a href="#{{ key }}&gt;{{ column }}&lt;/a&gt;
 {% endfor %}</code></pre>
 					</section>
 					<section>
-						<h2>Atributs</h2>
-						<p>Imprimir atributs d'una etiqueta</p>
+						<h2>Atributos</h2>
+						<p>Imprimir atributos de una etiqueta</p>
 						<pre><code class="language-twig">&lt;div{{ attributes }}&gt;</code></pre>
-						<p>Podem imprimir només allò que volem</p>
+						<div class="fragment fade-up">
+						<p>O bien imprimir solamente aquellos atributos que nos interesen</p>
 						<pre><code class="language-twig">&lt;div class="myclass {{ attributes.class }}"{{ attributes|without('class') }}&gt;</code></pre>
+						</div>
 					</section>
 					<section>
-						<h2>Atributs II</h2>
-						<p>Manipular els valors</p>
+						<h2>+Atributos</h2>
+						<p>Manipular los valores; añadiendo o quitando elementos.</p>
 						<pre><code class="language-twig">&lt;div{{ attributes.addClass('hello').removeClass('bye') }}&gt;</code></pre>
-						<p>Condicionals</p>
+						<div class="fragment fade-up">
+						<p>Realizando comprobaciones.</p>
 						<pre><code class="language-twig">{% if attributes.hasClass('field-label-inline') %}
   {# My inline custom code #}
 {% endif %}</code></pre>
+</div>
+
 					</section>
 					<section>
-						<h2>Atributs III</h2>
-						<p>Establir valors</p>
+						<h2>++Atributos</h2>
+						<p>Establecer valores</p>
 						<pre><code class="language-twig">&lt;div{{ attributes.setAttribute('id', 'menu-link') }}&gt;</code></pre>
-						<p>Esborrar valors</p>
+						<div class="fragment fade-up">
+						<p>Borrar valores</p>
 						<pre><code class="language-twig">&lt;div{{ attributes.removeAttribute('id') }}&gt;</code></pre>
+						</div>
 					</section>
 					<section>
-						<h2>Filtres</h2>
-						<p>S'usen per a manipular les variables</h2>
+						<h2>Filtros</h2>
+						<p>Se pueden usar para manipular las variables...</h2>
 						<pre><code class="language-twig">{{ ponies|safe_join(", ")|lower}}</code></pre>
-						<p>Per traduir cadenes</p>
+						<div class="fragment fade-up">
+						<p>...o para traducir cadenas</p>
 						<pre><code class="language-twig">&lt;span class="marker"&gt;{{ 'New'|t }}&lt;/span&gt;</code></pre>
-						<p>Tot i que per a traduir cadenes amb variables es pot usar</p>
-						<pre><code class="language-twig">{% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}</code></pre>
-						<small>Altres exemples <code class="language-twig">clean_class</code>, <code class="language-twig">format_date</code>, <code class="language-twig">without</code>, <code class="language-twig">drupal_escape</code>,...</small>
+						</div>
 					</section>
 					<section>
-						<h2>Herència de plantilles</h2>
-						<p>Es poden definir zones a les plantilles que després poden ser modificades en d'altres</p>
-						<p>Fitxer: <code>block.html.twig</code></p>
+						<h2>Traducir cadenas con variables</h2>
+						<p>Aunque para traducir cadenas que incluyan variables se puede usar</p>
+						<pre><code class="language-twig">{% trans %}
+  Submitted by {{ author_name }} on {{ date }}
+{% endtrans %}</code></pre>
+					</section>
+					<section>
+						<h2>+Filtros</h2>
+						<code class="language-twig">clean_class</code>, <code class="language-twig">format_date</code>, <code class="language-twig">without</code>, <code class="language-twig">drupal_escape</code>,...
+						<p><a href="https://www.drupal.org/node/2357633">+info</a></p>
+					</section>
+					<section>
+						<h2>Herencia de plantillas</h2>
+						<p>Se pueden definir zonas en las plantilles que puedan ser modificadas (extendidas) en otras plantillas.</p>
+					</section>
+					<section>
+						<h2>Herencia de plantillas</h2>
+						<p>Archivo: <code>block.html.twig</code></p>
 						<pre><code class="language-twig">&lt;div{{ attributes.addClass(classes) }}&gt;
   {{ title_prefix }}
   {% if label %}
@@ -219,8 +291,8 @@ $foo->isBar();</code></pre>
 &lt;/div&gt;</code></pre>
 					</section>
 					<section>
-						<h2>Herència de plantilles II</h2>
-						<p>Fitxer: <code>block--local-actions-block.html.twig</code></p>
+						<h3>+Herencia de plantilles</h3>
+						<p>Archivo: <code>block--local-actions-block.html.twig</code></p>
 						<pre><code class="language-twig">{% extends "block.html.twig" %}
 {#
 /**
@@ -236,11 +308,14 @@ $foo->isBar();</code></pre>
 					</section>
 					<section>
 						<h2>Debugging</h2>
-						<p><code>services.yml:</code></p>
+						<p>Archivo: <code>services.yml:</code></p>
 				        <pre><code class="language-yaml">parameters:
   twig.config:
     debug: true</code></pre>
-			            <p>Obtenim de sortida</p>
+					</section>
+					<section>
+						<h2>Debugging</h2>
+			            <p>Obtenemos información adicional</p>
 			            <pre><code class="language-html">&lt;!-- THEME DEBUG --&gt;
 &lt;!-- THEME HOOK: 'block' --&gt;
 &lt;!-- FILE NAME SUGGESTIONS:
@@ -261,9 +336,15 @@ $foo->isBar();</code></pre>
 					</section>
 				</section>
 				<section>
+						<h2>Debugging: Chrome extension</h2>
+			            <p><a href="https://github.com/arshad/drupal-template-helper">Drupal Template Helper</a></p>
+			            <img src="img/chrome-template-helper.png">
+					</section>
+				</section>
+				<section>
 					<section>
-						<h2>Afegir CSS i JS al nostre tema</h2>
-						<p>Ara tots els fitxers a carregar es defineixen a <code><em>my_theme</em>.libraries.yml</code></p>
+						<h2>Añadir CSS y JS a nuestro tema</h2>
+						<p>Ahora todos los ficheros a cargar se definen en <code><em>summer_theme</em>.libraries.yml</code></p>
 						<pre><code class="language-yaml">my-library:
   version: 1.x
   css:
@@ -273,7 +354,7 @@ $foo->isBar();</code></pre>
     js/my-library.js: {}</code></pre>
 					</section>
 					<section>
-						<h2>Afegir CSS global</h2>
+						<h2>Añadir CSS global</h2>
 						<pre><code class="language-yaml">global-styling:
   version: 1.x
   css:
@@ -289,8 +370,8 @@ $foo->isBar();</code></pre>
       css/print.css: { media: print }</code></pre>
 					</section>
 					<section>
-						<h2>Gestió de dependències</h2>
-						<p>Drupal 8 no carrega jQuery, per exemple, si no li especifiquem.</p>
+						<h2>Gestión de dependencias</h2>
+						<p>Drupal 8 no carga jQuery, por ejemplo, si no lo especificamos.</p>
 						<pre><code class="language-yaml">my-library:
   version: 1.x
   css:
@@ -302,7 +383,7 @@ $foo->isBar();</code></pre>
     - core/jquery</code></pre>
 					</section>
 					<section>
-						<h2>Afegir una biblioteca</h2>
+						<h2>Añadir una librería</h2>
 						<p>De forma global</h2>
 						<pre><code class="language-yaml">name: My theme
 type: theme
@@ -313,24 +394,24 @@ libraries:
   - my_theme/my-library</code></pre>
 					</section>
 					<section>
-						<h2>Afegir una biblioteca II</h2>
+						<h2>+Añadir una librería</h2>
 						<p>En un template de Twig</h2>
 						<pre><code class="language-twig">{{ attach_library('my_theme/my-library') }}
 &lt;div&gt;Some markup {{ message }}&lt;/div&gt;</code></pre>
 					</section>
 					<section>
-						<h2>Afegir una biblioteca III</h2>
-						<p>En una pàgina concreta, hem de crear el fitxer <code>my_theme.theme</code></p>
-						<pre><code class="language-php">function my_theme_preprocess_page(&$variables) {
+						<h2>++Añadir una librería</h2>
+						<p>En una página concreta, tenemos que crear el archivo <code>summer_theme.theme</code></p>
+						<pre><code class="language-php">function summer_theme_preprocess_page(&$variables) {
   $variables['#cache']['contexts'][] = 'route';
   if (\Drupal::routeMatch()->getRouteName() === 'entity.node.preview') {
-    $variables['#attached']['library'][] = 'my_theme/my-library';
+    $variables['#attached']['library'][] = 'summer_theme/my-library';
   }
 }</code></pre>
 					</section>
 				</section>
 				<section>
-					<h2><code><em>my_theme</em>.breakpoints.yml</code></h2>
+					<h3><code><em>my_theme</em>.breakpoints.yml</code></h3>
 					<pre><code class="language-yaml">my_theme.mobile:
   label: mobile
   mediaQuery: ''

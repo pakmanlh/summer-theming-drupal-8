@@ -32,13 +32,13 @@ $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: uppercase;
 $headingFontWeight: 600;
-$linkColor: #06a7e2;
+$linkColor: #fff;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
 $heading1Size: 2em;
 $heading2Size: 1.2em;
-$heading3Size: 0.3em;
+$heading3Size: 0.9em;
 $heading4Size: 0.1em;
 
 section.has-light-background {
@@ -47,7 +47,7 @@ section.has-light-background {
 	}
 }
 
-.reveal.mario {
+.reveal.summer {
   .slides {
     padding: 0;
   }
@@ -202,13 +202,13 @@ section.has-light-background {
     flex: 1 0 40%;
   }
 }
-.dungeons .reveal.mario {
+.dungeons .reveal.summer {
   h1 {
     color: #f600ff;
     background: rgba(0, 0, 0, 0.6);
   }
 }
-.inside-dungeons .reveal.mario {
+.inside-dungeons .reveal.summer {
   h4,h3,h2 {
     color: #f600ff;
   }
@@ -224,6 +224,10 @@ section.has-light-background {
 }
 .can-i-use {
   width: 100%;
+}
+
+.lowercase {
+  text-transform: none !important;
 }
 
 // Theme template ------------------------------

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * Black theme for reveal.js. This is the opposite of the 'white' theme.
  *
@@ -11,123 +12,123 @@
 section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
   color: #222; }
 
-.reveal.mario {
+.reveal.summer {
   /* Ejemplo 1 */ }
-  .reveal.mario .slides {
+  .reveal.summer .slides {
     padding: 0; }
-  .reveal.mario .backgrounds {
+  .reveal.summer .backgrounds {
     background: url("../../img/slide-interior.jpg");
     background-size: 100% 100%; }
-  .reveal.mario em.rotate {
+  .reveal.summer em.rotate {
     transform: rotate(180deg);
     font-style: normal; }
-  .reveal.mario h1 {
+  .reveal.summer h1 {
     color: #8aff00; }
-  .end .reveal.mario .slides,
-  .dungeons .reveal.mario .slides,
-  .portada .reveal.mario .slides {
+  .end .reveal.summer .slides,
+  .dungeons .reveal.summer .slides,
+  .portada .reveal.summer .slides {
     background: none; }
-  .reveal.mario .portada h1 {
+  .reveal.summer .portada h1 {
     margin-top: 2.5em;
     color: #fff;
     text-shadow: 3px 3px 3px #000;
     font-weight: normal;
     font-family: 'sunset_gpregular'; }
-  .reveal.mario .portada .name {
+  .reveal.summer .portada .name {
     text-shadow: 0px 0px 3px #484888; }
-  .reveal.mario .logo-portada {
+  .reveal.summer .logo-portada {
     background: rgba(255, 255, 255, 0.9);
     margin: 0;
     width: 30%;
     box-shadow: none; }
-  .reveal.mario .logo-about-me {
+  .reveal.summer .logo-about-me {
     margin: -1em 0;
     width: 40%;
     box-shadow: none;
     vertical-align: middle; }
-  .reveal.mario .hashtag,
-  .reveal.mario .twitter_account {
+  .reveal.summer .hashtag,
+  .reveal.summer .twitter_account {
     z-index: 10;
     font-size: 0.45em;
     position: absolute;
     top: 0.5em; }
-  .reveal.mario .hashtag {
+  .reveal.summer .hashtag {
     left: 0.5em;
     content: "#DrupalCampEs"; }
-  .reveal.mario .twitter_account {
+  .reveal.summer .twitter_account {
     right: 0.5em; }
-  .reveal.mario section ul {
+  .reveal.summer section ul {
     margin: 0 1em; }
-    .reveal.mario section ul li {
+    .reveal.summer section ul li {
       margin: 0.5em 0; }
-  .reveal.mario section img {
+  .reveal.summer section img {
     border: 0;
     background: 0; }
-  .reveal.mario .small-font {
+  .reveal.summer .small-font {
     font-size: 60%; }
-  .reveal.mario .japanese {
+  .reveal.summer .japanese {
     font-family: 'Mamelon';
     font-size: 1.5em; }
-  .reveal.mario .right {
+  .reveal.summer .right {
     text-align: right;
     margin-right: 0.5em; }
-  .reveal.mario .left {
+  .reveal.summer .left {
     text-align: left;
     margin-left: 0.5em; }
-  .reveal.mario .contenedor {
+  .reveal.summer .contenedor {
     margin: 0 auto;
     width: 95%;
     background: #00c800;
     font-family: Arial; }
-  .reveal.mario .elemento {
+  .reveal.summer .elemento {
     margin: 0.5em;
     padding: 0.5em;
     background: #70b0d0; }
-    .reveal.mario .elemento__title {
+    .reveal.summer .elemento__title {
       font-size: 18px;
       font-family: Arial;
       color: #c0e0e0; }
-    .reveal.mario .elemento__texto {
+    .reveal.summer .elemento__texto {
       font-size: 12px;
       color: #333; }
-    .reveal.mario .elemento__boton {
+    .reveal.summer .elemento__boton {
       padding: 1em;
       background: red;
       font-size: 12px;
       border-radius: 5px;
       color: #fff; }
-  .reveal.mario .cont-ej1 {
+  .reveal.summer .cont-ej1 {
     display: flex;
     justify-content: center; }
-  .reveal.mario .el-grow {
+  .reveal.summer .el-grow {
     flex-grow: 0;
     flex-basis: 200px; }
-  .reveal.mario .el-basis {
+  .reveal.summer .el-basis {
     flex-grow: 0;
     flex-shrink: 1;
     flex-basis: 150px; }
-  .reveal.mario .alto-fijo {
+  .reveal.summer .alto-fijo {
     height: 50px;
     overflow: hidden; }
-  .reveal.mario .vertical-align {
+  .reveal.summer .vertical-align {
     flex: 0 0 50px;
     width: 70px; }
-  .reveal.mario .el-ej1 {
+  .reveal.summer .el-ej1 {
     flex: 1 0 200px; }
-  .reveal.mario .el-wrap {
+  .reveal.summer .el-wrap {
     flex: 1 0 40%; }
 
-.dungeons .reveal.mario h1 {
+.dungeons .reveal.summer h1 {
   color: #f600ff;
   background: rgba(0, 0, 0, 0.6); }
 
-.inside-dungeons .reveal.mario h4, .inside-dungeons .reveal.mario h3, .inside-dungeons .reveal.mario h2 {
+.inside-dungeons .reveal.summer h4, .inside-dungeons .reveal.summer h3, .inside-dungeons .reveal.summer h2 {
   color: #f600ff; }
 
-.inside-dungeons .reveal.mario .slides {
+.inside-dungeons .reveal.summer .slides {
   background: rgba(90, 90, 90, 0.75); }
 
-.inside-dungeons .reveal.mario a {
+.inside-dungeons .reveal.summer a {
   color: #00f800; }
 
 .modernizr {
@@ -135,6 +136,9 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 .can-i-use {
   width: 100%; }
+
+.lowercase {
+  text-transform: none !important; }
 
 /*********************************************
  * GLOBAL STYLES
@@ -151,7 +155,7 @@ body {
 
 ::selection {
   color: #fff;
-  background: #6cd5fb;
+  background: white;
   text-shadow: none; }
 
 .reveal .slides > section,
@@ -185,7 +189,7 @@ body {
   font-size: 1.2em; }
 
 .reveal h3 {
-  font-size: 0.3em; }
+  font-size: 0.9em; }
 
 .reveal h4 {
   font-size: 0.1em; }
@@ -253,12 +257,18 @@ body {
 .reveal blockquote {
   display: block;
   position: relative;
-  width: 70%;
+  width: 90%;
   margin: 20px auto;
   padding: 5px;
   font-style: italic;
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0px 0px 5px #f1bc46; }
+  .reveal blockquote:before {
+    font-family: 'kg_ray_of_sunshineregular';
+    content: "“"; }
+  .reveal blockquote:after {
+    font-family: 'kg_ray_of_sunshineregular';
+    content: "”"; }
 
 .reveal blockquote p:first-child,
 .reveal blockquote p:last-child {
@@ -333,20 +343,26 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #06a7e2;
+  color: #fff;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
-  transition: color .15s ease; }
+  transition: color .15s ease;
+  background: #f1bc46;
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+  font-family: 'kg_ray_of_sunshineregular';
+  font-size: 0.8em; }
 
 .reveal a:hover {
-  color: #3bc7fa;
+  color: #000;
+  background: #f6d68d;
   text-shadow: none;
   border: none; }
 
 .reveal .roll span:after {
   color: #fff;
-  background: #047097; }
+  background: #d9d9d9; }
 
 /*********************************************
  * IMAGES
@@ -368,7 +384,7 @@ body {
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #06a7e2;
+  border-color: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
@@ -376,31 +392,31 @@ body {
  *********************************************/
 .reveal .controls .navigate-left,
 .reveal .controls .navigate-left.enabled {
-  border-right-color: #06a7e2; }
+  border-right-color: #fff; }
 
 .reveal .controls .navigate-right,
 .reveal .controls .navigate-right.enabled {
-  border-left-color: #06a7e2; }
+  border-left-color: #fff; }
 
 .reveal .controls .navigate-up,
 .reveal .controls .navigate-up.enabled {
-  border-bottom-color: #06a7e2; }
+  border-bottom-color: #fff; }
 
 .reveal .controls .navigate-down,
 .reveal .controls .navigate-down.enabled {
-  border-top-color: #06a7e2; }
+  border-top-color: #fff; }
 
 .reveal .controls .navigate-left.enabled:hover {
-  border-right-color: #3bc7fa; }
+  border-right-color: white; }
 
 .reveal .controls .navigate-right.enabled:hover {
-  border-left-color: #3bc7fa; }
+  border-left-color: white; }
 
 .reveal .controls .navigate-up.enabled:hover {
-  border-bottom-color: #3bc7fa; }
+  border-bottom-color: white; }
 
 .reveal .controls .navigate-down.enabled:hover {
-  border-top-color: #3bc7fa; }
+  border-top-color: white; }
 
 /*********************************************
  * PROGRESS BAR
@@ -409,7 +425,7 @@ body {
   background: rgba(0, 0, 0, 0.2); }
 
 .reveal .progress span {
-  background: #06a7e2;
+  background: #fff;
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
