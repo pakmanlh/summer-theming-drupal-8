@@ -60,20 +60,29 @@
 						<li><span class="japanese">日本語の学生</span></li>
 					</ul>
 				</section>
-
+				<section>
+					<h2>Quienes estamos hoy</h2>
+					<ul>
+						<li class="fragment fade-up"><i class="fa fa-hand-pointer-o"></i>
+ ¿Desarrolladores?</li>
+						<li class="fragment fade-up"><i class="fa fa-hand-stop-o"></i> ¿Drupaleros?</li>
+						<li class="fragment fade-up"><i class="fa fa-hand-peace-o"></i> ¿Themers?</li>
+						<li class="fragment fade-up"><i class="fa fa-hand-spock-o"></i> ¿Diseñadores?</li>
+					</ul>
+				</section>
 				<!-- Legacy slides -->
 
 				<section>
-					<h2>Conceptos a olvidar</h2>
+					<h2><i class="fa fa-remove"></i> Conceptos a olvidar</h2>
 					<ul>
 						<li><span class="fragment strike">Funciones <code>theme()</code></span> <span class="fragment fade-up">Plantillas twig</span></li>
 						<li><span class="fragment strike"><code>template_process_hook()</code></span> <span class="fragment fade-up">desaparece!</span></li>
-						<li class="fragment fade-up">Ahora serán todo <em>render arrays (yuju!)</em></li>
+						<li class="fragment fade-up">Ahora serán todo <em>render arrays</em> <i class="fa fa-thumbs-o-up"></i></li>
 					</ul>
 				</section>
 				<section>
 					<h2>¿Render qué?</h2>
-				<blockquote cite="https://www.drupal.org/developing/api/8/render/arrays">Render arrays are nested and thus form a tree. Consider them Drupal's «render tree» — Drupal's equivalent of the DOM.</blockquote>
+				<blockquote cite="https://www.drupal.org/developing/api/8/render/arrays"><i class="fa fa-quote-left"></i> Render arrays are nested and thus form a tree. Consider them Drupal's «render tree» — Drupal's equivalent of the DOM. <i class="fa fa-quote-right"></i></blockquote>
 				<a href="https://www.drupal.org/developing/api/8/render/arrays">+info</a>
 				</section>
 				<section>
@@ -90,10 +99,10 @@ $element['#attributes'] = [
 				</section>
 				<section>
 					<section>
-						<h2><code>summer_theme</code></h2>
+						<h2><i class="fa fa-folder-o"></i>  <code class="lowercase">summer_theme</code></h2>
 						<p>Crearemos una carpeta <code>summer_theme</code><br> en la carpeta<code>/themes</code></p>
 						<p class="fragment"><strong>NUNCA</strong> en la carpeta <code>/core/themes</code></p>
-						<p class="fragment"><em>Briconsejo:</em> crear subcarpetas:<br> <code>/themes/contrib</code> <br> <code>/themes/custom</code></p>
+						<p class="fragment"><i class="fa fa-lightbulb-o"></i><em>Briconsejo:</em> crear subcarpetas:<br> <code>/themes/contrib</code> <br> <code>/themes/custom</code></p>
 					</section>
 					<section>
 						<h2><code class="lowercase"><em>summer_theme</em>.info.yml</code></h2>
@@ -111,13 +120,13 @@ regions:
 					<section>
 						<h2>Temas en core:</h2>
 						<ul>
-							<li>Bartik</li>
-							<li>Seven</li>
-							<li>Stark</li>
+							<li><i class="fa fa-drupal" style="color: blue;"></i> Bartik: nuestro viejo amigo, incluye el archifamoso módulo color.</li>
+							<li><i class="fa fa-lock"></i> Seven: para la administración.</li>
+							<li><i class="fa fa-list"></i> Stark: para realizar tests.</li>
 						</ul>
 					</section>
 					<section>
-						<h2>Temas base</h2>
+						<h2><i class="fa fa-eye-slash"></i> Temas base</h2>
 						<p>Para crear un nuevo tema podemos escoger entre dos <u>temas base</u> (ocultos) incluidos en core.</p>
 					</section>
 					<section>
@@ -157,7 +166,7 @@ regions:
 					</section>
 					<section>
 						<h2>Variables</h2>
-						<p>Imprimir variable</p>
+						<p><i class="fa fa-pencil"></i> Imprimir variable</p>
 						<pre><code class="language-twig">&lt;h2{{ title_attributes }}&gt;{{ label }}&lt;/h2&gt;</code></pre>
 					</section>
 					<section>
@@ -177,7 +186,7 @@ $foo->isBar();</code></pre>
 					</section>
 					<section>
 						<h2>Variables</h2>
-						<p>Assignar valors a variable</pe>
+						<p>Asignar valores a variable</pe>
 						<pre><code class="language-twig">{%
   set classes = [
     'block',
@@ -195,7 +204,7 @@ $foo->isBar();</code></pre>
 {% endif %}</code></pre>
 					</section>
 					<section>
-						<h2>+Condicionales</h2>
+						<h2>Condicionales</h2>
 <pre><code class="language-twig">{% if (summary is not empty) or (description is not empty) %}
   &lt;details&gt;
     {% if summary is not empty %}
@@ -215,15 +224,35 @@ $foo->isBar();</code></pre>
 {% endfor %}</code></pre>
 					</section>
 					<section>
-						<h3>+Estructuras de control</h3>
+						<h3>Estructuras de control</h3>
 						<p>Iterando por clave y valor</p>
 						<pre><code class="language-twig">{% for key, column in row.columns %}
   &lt;a href="#{{ key }}&gt;{{ column }}&lt;/a&gt;
 {% endfor %}</code></pre>
 					</section>
 					<section>
+						<h3>Estructuras de control</h3>
+						<p>Variable loop</p>
+						<pre><code class="language-twig">{% for content in column.content %}
+  {% if loop.first %}
+  {# primer elemento #}
+  {% elseif loop.last %}
+  {# último elemento loop #}
+  {% elseif loop.index == "2" %}
+  {# segundo elemento #}
+  {% elseif loop.revindex == "2" %}
+  {# segundo elemento contando alrevés #}
+  {% elseif loop.revindex == "2" %}
+  {# segundo elemento contando alrevés #}
+  {% else %}
+  {{- content.separator }}{{ content.field_output -}}
+  {% endif %}
+{% endfor %}</code></pre>
+					</section>
+					<section>
 						<h2>Atributos</h2>
 						<p>Imprimir atributos de una etiqueta</p>
+						<pre><code class="language-html"><div id="page-title" property="schema:name" data-quickedit-field-id="node/1/title/en/full" class="field field--name-title field--type-string field--label-hidden quickedit-field">Hello Drupaleros!</div></code></pre>
 						<pre><code class="language-twig">&lt;div{{ attributes }}&gt;</code></pre>
 						<div class="fragment fade-up">
 						<p>O bien imprimir solamente aquellos atributos que nos interesen</p>
@@ -231,7 +260,7 @@ $foo->isBar();</code></pre>
 						</div>
 					</section>
 					<section>
-						<h2>+Atributos</h2>
+						<h2>Atributos</h2>
 						<p>Manipular los valores; añadiendo o quitando elementos.</p>
 						<pre><code class="language-twig">&lt;div{{ attributes.addClass('hello').removeClass('bye') }}&gt;</code></pre>
 						<div class="fragment fade-up">
@@ -243,7 +272,7 @@ $foo->isBar();</code></pre>
 
 					</section>
 					<section>
-						<h2>++Atributos</h2>
+						<h2>Atributos</h2>
 						<p>Establecer valores</p>
 						<pre><code class="language-twig">&lt;div{{ attributes.setAttribute('id', 'menu-link') }}&gt;</code></pre>
 						<div class="fragment fade-up">
@@ -268,17 +297,36 @@ $foo->isBar();</code></pre>
 {% endtrans %}</code></pre>
 					</section>
 					<section>
-						<h2>+Filtros</h2>
+						<h2>Filtros</h2>
 						<code class="language-twig">clean_class</code>, <code class="language-twig">format_date</code>, <code class="language-twig">without</code>, <code class="language-twig">drupal_escape</code>,...
 						<p><a href="https://www.drupal.org/node/2357633">+info</a></p>
 					</section>
 					<section>
 						<h2>Herencia de plantillas</h2>
-						<p>Se pueden definir zonas en las plantilles que puedan ser modificadas (extendidas) en otras plantillas.</p>
+						<p>Se pueden definir zonas en las plantillas que sean modificadas (extendidas) en otras plantillas.</p>
 					</section>
+					        <section>
+					        <h2>Herencia de plantillas</h2>
+					        <p>Definimos una «zona variante» <br><i class="fa fa-file-code-o"></i> <code>page.html.twig</code></p>
+					<pre><code data-trim class="language-twig">
+{% block variante %}
+{% endblock %}
+					</code></pre>
+					        </section>
+					        <section>
+					        <h3>Herencia de plantillas</h3>
+					        <p>Heredamos toda la página, <br>modificando <u>solamente</u> ese trozo <br><code><i class="fa fa-file-code-o"></i> page--front.html.twig</code></p>
+					<pre><code data-trim class="language-twig">
+{% extends "page.html.twig" %}
+{% block variante %}
+<h4>Contenido específico de la página principal.</h4>
+{% endblock %}
+					</code></pre>
+					<p><small></small></p>
+					        </section>
 					<section>
 						<h2>Herencia de plantillas</h2>
-						<p>Archivo: <code>block.html.twig</code></p>
+						<p><i class="fa fa-file-code-o"></i> <code>block.html.twig</code></p>
 						<pre><code class="language-twig">&lt;div{{ attributes.addClass(classes) }}&gt;
   {{ title_prefix }}
   {% if label %}
@@ -291,8 +339,8 @@ $foo->isBar();</code></pre>
 &lt;/div&gt;</code></pre>
 					</section>
 					<section>
-						<h3>+Herencia de plantilles</h3>
-						<p>Archivo: <code>block--local-actions-block.html.twig</code></p>
+						<h3>Herencia de plantilles</h3>
+						<p><i class="fa fa-file-code-o"></i> <code>block--local-actions-block.html.twig</code></p>
 						<pre><code class="language-twig">{% extends "block.html.twig" %}
 {#
 /**
@@ -308,14 +356,14 @@ $foo->isBar();</code></pre>
 					</section>
 					<section>
 						<h2>Debugging</h2>
-						<p>Archivo: <code>services.yml:</code></p>
+						<p><i class="fa fa-file-code-o"></i> <code>services.yml:</code></p>
 				        <pre><code class="language-yaml">parameters:
   twig.config:
     debug: true</code></pre>
 					</section>
 					<section>
 						<h2>Debugging</h2>
-			            <p>Obtenemos información adicional</p>
+			            <p><i class="fa fa-code"></i> Obtenemos información adicional</p>
 			            <pre><code class="language-html">&lt;!-- THEME DEBUG --&gt;
 &lt;!-- THEME HOOK: 'block' --&gt;
 &lt;!-- FILE NAME SUGGESTIONS:
@@ -336,15 +384,25 @@ $foo->isBar();</code></pre>
 					</section>
 				</section>
 				<section>
-						<h2>Debugging: Chrome extension</h2>
+						<h2><i class="fa fa-chrome"></i> Chrome extension</h2>
 			            <p><a href="https://github.com/arshad/drupal-template-helper">Drupal Template Helper</a></p>
 			            <img src="img/chrome-template-helper.png">
+					</section>
+					<section>
+						<h2>Debugging</h2>
+						<p>Usando el módulo <a href="https://www.drupal.org/project/devel">Devel</a> y <a href="https://www.drupal.org/project/search_kint">Kint search</a></p>
+						<pre><code class="language-twig">{{ kint(content) }}</code></pre>
+						<a href="http://d8.dev/node/1">Ejemplo</a>
+					</section>
+					<section>
+						<h2><i class="fa fa-lightbulb-o"></i> Consejos útiles</h2>
+						<p>Configurar la visibilidad de los filtros contextuales y la <em>toolbar</em> de Drupal</p>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Añadir CSS y JS a nuestro tema</h2>
-						<p>Ahora todos los ficheros a cargar se definen en <code><em>summer_theme</em>.libraries.yml</code></p>
+						<p>Ahora todos los ficheros a cargar se definen en <br><i class="fa fa-file-code-o"></i> <code style="font-size: 0.9em;"><em>summer_theme</em>.libraries.yml</code></p>
 						<pre><code class="language-yaml">my-library:
   version: 1.x
   css:
@@ -388,19 +446,19 @@ $foo->isBar();</code></pre>
 						<pre><code class="language-yaml">name: My theme
 type: theme
 base theme: classy
-description: 'My custom theme for Drupal.cat'
+description: 'My custom theme for DrupalSummer'
 core: 8.x
 libraries:
   - my_theme/my-library</code></pre>
 					</section>
 					<section>
-						<h2>+Añadir una librería</h2>
+						<h2>Añadir una librería</h2>
 						<p>En un template de Twig</h2>
-						<pre><code class="language-twig">{{ attach_library('my_theme/my-library') }}
+						<pre><code class="language-twig">{{ attach_library(active_theme()'/my-library') }}
 &lt;div&gt;Some markup {{ message }}&lt;/div&gt;</code></pre>
 					</section>
 					<section>
-						<h2>++Añadir una librería</h2>
+						<h2>Añadir una librería</h2>
 						<p>En una página concreta, tenemos que crear el archivo <code>summer_theme.theme</code></p>
 						<pre><code class="language-php">function summer_theme_preprocess_page(&$variables) {
   $variables['#cache']['contexts'][] = 'route';

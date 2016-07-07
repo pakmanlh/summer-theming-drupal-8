@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /**
  * Black theme for reveal.js. This is the opposite of the 'white' theme.
  *
@@ -8,7 +7,7 @@
 @import url(../../lib/font/summer-fonts/styles.css);
 @import url(../../lib/font/LightPixel-7/styles.css);
 @import url(../../lib/font/Mamelon/styles.css);
-@import url(../../lib/font/awesome/font-awesome.min.css);
+@import url(../../lib/font/font-awesome-4.6.3/css/font-awesome.min.css);
 section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
   color: #222; }
 
@@ -223,7 +222,7 @@ body {
 .reveal ul {
   display: inline-block;
   text-align: left;
-  margin: 0 0 0 1em; }
+  margin: 0 1em; }
 
 .reveal ol {
   list-style-type: decimal; }
@@ -248,7 +247,7 @@ body {
   font-weight: bold; }
 
 .reveal dd {
-  margin-left: 40px; }
+  margin-left: 0; }
 
 .reveal q,
 .reveal blockquote {
@@ -258,17 +257,13 @@ body {
   display: block;
   position: relative;
   width: 90%;
-  margin: 20px auto;
-  padding: 5px;
+  margin: 1em auto;
+  padding: 0.5em 0em;
   font-style: italic;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0px 0px 5px #f1bc46; }
-  .reveal blockquote:before {
-    font-family: 'kg_ray_of_sunshineregular';
-    content: "“"; }
-  .reveal blockquote:after {
-    font-family: 'kg_ray_of_sunshineregular';
-    content: "”"; }
+  .reveal blockquote .fa {
+    font-size: 0.5em; }
 
 .reveal blockquote p:first-child,
 .reveal blockquote p:last-child {
@@ -280,10 +275,10 @@ body {
 .reveal pre {
   display: block;
   position: relative;
-  width: 90%;
+  width: 100%;
   margin: 20px auto;
   text-align: left;
-  font-size: 0.55em;
+  font-size: 0.45em;
   font-family: monospace;
   line-height: 1.2em;
   word-wrap: break-word;
@@ -296,7 +291,7 @@ body {
   display: block;
   padding: 5px;
   overflow: auto;
-  max-height: 400px;
+  max-height: 500px;
   word-wrap: normal; }
 
 .reveal table {
