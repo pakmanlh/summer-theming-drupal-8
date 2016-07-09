@@ -182,7 +182,8 @@ $foo->bar();
 // Get de un objeto.
 $foo->getBar();
 // Existencia del valor.
-$foo->isBar();</code></pre>
+$foo->isBar();
+null</code></pre>
 					</section>
 					<section>
 						<h2>Variables</h2>
@@ -201,6 +202,12 @@ $foo->isBar();</code></pre>
   &lt;h2{{ title_attributes }}&gt;
     &lt;a href="{{ url }}" rel="bookmark"&gt;{{ label }}&lt;/a&gt;
   &lt;/h2&gt;
+{% endif %}</code></pre>
+					</section>
+					<section>
+						<h2>Condicionales</h2>
+						<pre><code class="language-twig">{% if user_name %}
+  Hi {{ user_name|default('Bartolo') }}
 {% endif %}</code></pre>
 					</section>
 					<section>
@@ -233,15 +240,13 @@ $foo->isBar();</code></pre>
 					<section>
 						<h3>Estructuras de control</h3>
 						<p>Variable loop</p>
-						<pre><code class="language-twig">{% for content in column.content %}
+						<pre><code class="language-twig">{% for content in node if content.published %}
   {% if loop.first %}
   {# primer elemento #}
   {% elseif loop.last %}
   {# último elemento loop #}
   {% elseif loop.index == "2" %}
   {# segundo elemento #}
-  {% elseif loop.revindex == "2" %}
-  {# segundo elemento contando alrevés #}
   {% elseif loop.revindex == "2" %}
   {# segundo elemento contando alrevés #}
   {% else %}
@@ -302,7 +307,7 @@ $foo->isBar();</code></pre>
 						<p><a href="https://www.drupal.org/node/2357633">+info</a></p>
 					</section>
 					<section>
-						<h2>Herencia de plantillas</h2>
+						<h2>Reuso de código en plantillas</h2>
 						<p>Se pueden definir zonas en las plantillas que sean modificadas (extendidas) en otras plantillas.</p>
 					</section>
 					        <section>
@@ -323,6 +328,12 @@ $foo->isBar();</code></pre>
 {% endblock %}
 					</code></pre>
 					<p><small></small></p>
+					        </section>
+					        <section>
+					        	<h2>Reuso de código en plantillas</h2>
+					        	<p>Aprovechar código para regiones iguales</p>
+					        	<pre><code data-trim class="language-twig">
+{% include('sidebar.twig') %}</code></pre>
 					        </section>
 					<section>
 						<h2>Herencia de plantillas</h2>
@@ -501,6 +512,36 @@ pako@ymbra.com</a>
 <a href="http://twitter.com/pakmanlh"><i class="fa fa-twitter-square"></i> @pakmanlh</a></p>
 <p>Gracias a <img src="img/logo-drupalcat.png" style="box-shadow: none; margin-top: -0.6em; vertical-align: middle;"></p>
       	</section>
+      						<section>
+      							<h2>Bola extra: Uso de macros</h2>
+      	<pre><code class="language-twig">{% import _self as menus %}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes }}>
+    {% else %}
+      <ul>
+    {% endif %}
+    {% for item in items %}
+      <li{{ item.attributes }}>
+        {{ link(item.title, item.url) }}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}</code></pre>
+</section>
+<section>
+	<h2>Uso de macros</h2>
+      							<a href="https://www.drupal.org/node/2490308">+info</a>
+      							<a href="http://twig.sensiolabs.org/doc/tags/macro.html">+info</a>
+      						</section>
 
 
 			</div>
